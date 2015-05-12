@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Reviews</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to image_tag("MOVIE.png", class: "navbar-brand"), '/movies' %>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <% if logged_in? %>
+                    <li class='user'>Hi, <%= current_user.name %> </li>
+                    <% end %>
+                    <li><%= link_to 'Home', '/movies'%> </li>
+                    <li><%= link_to 'Add review', new_movie_path%> </li>
+                    <% if logged_in? %>
+                    <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+                    <% else %>                    
+                    <li><%= link_to 'Sign up', new_user_path%> </li>
+                    <li><%= link_to 'Login', login_path %> </li>
+                    <% end %>
+                </ul>
+         
+               <%= form_tag movies_path, :method => 'get', :class =>"navbar-form navbar-right", :role => "search" do %>  
+                        <div class="input-group">
+                            
+                            <%= (text_field_tag :search, params[:search], :class =>"form-control", :placeholder =>"Search by category") %>
+                        <div class="input-group-btn">
+                    <%= submit_tag "Search",:category => nil, class:'btn btn-success' %>
+                    <% end %>
+                </form>
+            </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="starter-template">
+    <%= render 'movies/bootstrap_messages' %>
+
+        <%= yield %>
+
+    </div>
+</div>
+</body>
+</html>

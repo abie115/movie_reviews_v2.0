@@ -1,0 +1,90 @@
+@import "bootstrap";
+
+.field_with_errors { @extend .has-error; }
+.alert-notice { @extend .alert-info; }
+.alert-alert { @extend .alert-danger; }
+
+body{
+    margin-bottom:20px;
+}
+
+.navbar{
+    background-color:darkslategray;
+    border: 1px solid darkslategray;
+    font-weight: bold;
+   font-size: 14px;
+    margin-bottom:20px;
+}
+
+ul.nav.navbar-nav li a{
+    color:white;
+    text-shadow: 0px -1px rgba(0,0,0,0.5);
+}
+
+ul.nav.navbar-nav li a:hover{
+    background-color:darkcyan;
+}
+
+.list{
+    background-color:#D6F5D6;
+    border: 2px solid;
+    border-color:#9BB4B4;
+    padding:10px;
+    margin:10px;
+}
+
+.list:hover{
+    background-color:#9BB4B4;
+
+}
+
+.container .btn {
+color:white;
+}
+
+select.form-control{
+    width:6em;
+    height:2.5em;
+    display:inline;
+}
+select#movie_release_date_3i.form-control{
+    width:4.7em;
+    height:2.5em;
+    display:inline;
+}
+
+select#movie_release_date_2i.form-control{
+    width:8.7em;
+    height:2.5em;
+    display:inline;
+}
+
+.navbar-brand{
+    padding:5px;
+}
+
+.navbar-brand:hover{
+    padding:7px;
+}
+
+.navbar-brand:active{
+    opacity: 0.7;
+}
+
+h3{
+    padding:0;
+    margin:0;
+}
+
+.user{
+    color:#70ADAD;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    font-style:italic;
+    padding-left: 10px;
+    padding-right:10px;
+    position: relative;
+    text-shadow: 0px -1px rgba(0,0,0,0.5);
+}
+
