@@ -1,33 +1,37 @@
 <div class="main">
 
 </div>
+
+<% @movies.first(10).each do |movie| %>
+    <% if movie %>
+     <%= link_to movie_path(movie['id']) do %>
+       <%= movie['title'] %>
+     <% end %>
+  <% end %>
+<% end %>
+
+
     <% @movies.each do |movie| %>
         <div class="list">
             <dl class="dl-horizontal"> 
                 <dt>Title:</dt>            
-                <dd><%= movie.title %></dd>
+                <dd><%= movie['title'] %></dd>
      
                 <dt>Category:</dt>
-                <dd><%= movie.category %> <dd>
+                <dd>---<dd>
         
                 <dt>Release date:</dt>
-                <dd><%= movie.release_date %> <dd>
-        
-                <dt>Name:</dt>
-                <dd><%= movie.name %> <dd>
+                <dd><%= movie['release_date'] %> <dd>
             
                 <dt>Review:</dt>
-                <dd><%= movie.review.length > 120 ?movie.review[0,120]+"...":movie.review %><dd>
+                <dd><%= movie['overview'] %><dd>
             </dl>
             
         <%= link_to 'Show', movie, :class=>"btn btn-primary btn-sm" %> 
-        <% if logged_in? %>
-          <%= link_to 'Edit', edit_movie_path(movie), :class=>"btn btn-primary btn-sm" %>
-          <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm" %>
-        <% end %>
+        
     </div>
 <% end %>
-<%= will_paginate @movies %>
+
 
 
 

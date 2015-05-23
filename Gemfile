@@ -19,6 +19,9 @@ gem 'turbolinks', '~> 2.5.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.2.13'
 
+# Gem for Movie Database Api
+gem 'themoviedb', '~> 0.1.0'
+
 group :development, :test do
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.10'
