@@ -14,15 +14,12 @@
             <dl class="dl-horizontal col-md-9"> 
                 <dt>Title:</dt>            
                 <dd><%= movie['title'] %></dd>
-     
-                <dt>Category:</dt>
-                <dd>---<dd>
         
                 <dt>Release date:</dt>
                 <dd><%= movie['release_date'] %> <dd>
             
-                <dt>Review:</dt>
-                <dd><%= movie['overview'] %><dd>
+                <dt>Rating:</dt>
+                <dd><%= movie['vote_average'] %> (<%= movie['vote_count'] %> votes)<dd>
             </dl>
             
         <%= link_to 'Show', movie_path(movie['id']), :class=>"btn btn-primary btn-sm col-md-1" %> 
