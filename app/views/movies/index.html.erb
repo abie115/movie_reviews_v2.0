@@ -1,19 +1,17 @@
 <div class="main">
 
 </div>
-
-<% @movies.first(10).each do |movie| %>
-    <% if movie %>
-     <%= link_to movie_path(movie['id']) do %>
-       <%= movie['title'] %>
-     <% end %>
-  <% end %>
-<% end %>
-
+<h1>
+    Movie Reviews
+</h1>
 
     <% @movies.each do |movie| %>
-        <div class="list">
-            <dl class="dl-horizontal"> 
+        <div class="list row">
+            <div class="col-md-2">
+            <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") %>
+            </div>
+            
+            <dl class="dl-horizontal col-md-9"> 
                 <dt>Title:</dt>            
                 <dd><%= movie['title'] %></dd>
      
@@ -27,7 +25,7 @@
                 <dd><%= movie['overview'] %><dd>
             </dl>
             
-        <%= link_to 'Show', movie, :class=>"btn btn-primary btn-sm" %> 
+        <%= link_to 'Show', movie_path(movie['id']), :class=>"btn btn-primary btn-sm col-md-1" %> 
         
     </div>
 <% end %>

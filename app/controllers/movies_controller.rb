@@ -2,12 +2,15 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
      before_filter :require_login, :only => [:new, :edit]
 
+  
+
   # GET /movies
   # GET /movies.json
   def index
       # @movies=Movie.all
       # @movies = Movie.paginate(page: params[:page], :per_page =>4).order('created_at DESC').search(params[:search])
       @movies = Tmdb::Movie.now_playing
+      @configuration = Tmdb::Configuration.new
       respond_to do |format|
           format.html
           format.js
@@ -72,7 +75,8 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      #@movie = Movie.find(params[:id])
+      @movie = Tmdb::Movie.detail(params[:id]);
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
