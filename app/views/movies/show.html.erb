@@ -22,8 +22,19 @@
   <strong>Name:</strong>
   <%= @movie.name %>
 </p>
+
 <%= link_to '<< Back', movies_path, :class=>"btn btn-success btn-sm"%>
  <% if logged_in? %>
 <%= link_to 'Edit', edit_movie_path(@movie), :class=>"btn btn-primary btn-sm" %>
+<%= link_to 'Add comment',  new_comment_path(:movie => @movie.id), :class=>"btn btn-primary btn-sm" %>
 <%end%>
+ <div>
+    <% if @movie.comments.any? %>
+      <h2>Comments (<%= @movie.comments.count %>)</h2>
+      <ol class="comments">
+        <%= render @comments %>
+      </ol>
+      <%= will_paginate @comments %>
+    <% end %>
+  </div>
 

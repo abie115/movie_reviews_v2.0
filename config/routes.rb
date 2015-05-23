@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'sessions/new'
 
   resources :movies
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  resources :comments,          only: [:new, :create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

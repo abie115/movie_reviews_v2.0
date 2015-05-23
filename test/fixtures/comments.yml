@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  nick: MyString
+  add_date: 2015-05-23
+  movie_id: 
+
+two:
+  content: MyText
+  nick: MyString
+  add_date: 2015-05-23
+  movie_id: 

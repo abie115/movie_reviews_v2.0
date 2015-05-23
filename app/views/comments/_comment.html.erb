@@ -1,0 +1,7 @@
+<ul id="comment">
+  <li><%= comment.content %></li>
+  <li>Nick: <%= comment.nick %></li>
+  <li>
+    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+  </li>
+</ul>

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411232640) do
+ActiveRecord::Schema.define(version: 20150523205843) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.string   "nick"
+    t.date     "add_date"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["movie_id", "created_at"], name: "index_comments_on_movie_id_and_created_at"
+  add_index "comments", ["movie_id"], name: "index_comments_on_movie_id"
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
