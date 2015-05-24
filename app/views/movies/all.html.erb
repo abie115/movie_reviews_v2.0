@@ -1,0 +1,46 @@
+<div class="list row alert alert-info">
+  <div class="col-md-3 selectCat">
+    <h3>Select category:</h3>
+  </div>
+  <div class="dropdown col-md-3">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+      <% if @genre == nil %>
+        Categories
+      <% else %>
+        <%= @genre.name %>
+      <% end %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <% @genres.each do |genre| %>
+      <li role="presentation">
+          <%= link_to genre['name'], "/movies/all/"+genre['id'].to_s, :role=>"menuitem", :tabindex=>"-1" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<% if @movies != nil %>
+  <% @movies.each do |movie| %>
+          <div class="list row">
+              <div class="col-md-2">
+              <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") %>
+              </div>
+              
+              <dl class="dl-horizontal col-md-9"> 
+                  <dt>Title:</dt>            
+                  <dd><%= movie['title'] %></dd>
+          
+                  <dt>Release date:</dt>
+                  <dd><%= movie['release_date'] %> <dd>
+              
+                  <dt>Rating:</dt>
+                  <dd><%= movie['vote_average'] %> (<%= movie['vote_count'] %> votes)<dd>
+              </dl>
+              
+          <%= link_to 'Show', movie_path(movie['id']), :class=>"btn btn-primary btn-sm col-md-1" %> 
+          
+      </div>
+  <% end %>
+<% end %>

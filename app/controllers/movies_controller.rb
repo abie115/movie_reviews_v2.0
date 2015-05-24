@@ -9,7 +9,14 @@ class MoviesController < ApplicationController
   def index
       # @movies=Movie.all
       # @movies = Movie.paginate(page: params[:page], :per_page =>4).order('created_at DESC').search(params[:search])
-      @movies = Tmdb::Movie.now_playing
+      if params[:search] == nil
+        @movies = Tmdb::Movie.now_playing
+      else 
+        @search = Tmdb::Search.new
+        @search.resource("movie")
+        @search.query(params[:search])
+        @movies = @search.fetch
+      end
       @configuration = Tmdb::Configuration.new
       respond_to do |format|
           format.html
@@ -22,6 +29,18 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @configuration = Tmdb::Configuration.new
+  end
+  
+  # GET /movies/all
+  def all
+    if params['genre']
+      @genre = Tmdb::Genre.detail(params['genre'])
+      @movies = @genre.results
+    else
+      @movies = Tmdb::Movie.popular
+    end
+    @configuration = Tmdb::Configuration.new
+    @genres = Tmdb::Genre.list['genres']
   end
 
   # GET /movies/new

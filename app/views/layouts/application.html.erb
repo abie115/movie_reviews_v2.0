@@ -26,6 +26,7 @@
                     <li class='user'>Hi, <%= current_user.name %> </li>
                     <% end %>
                     <li><%= link_to 'Home', '/movies'%> </li>
+                    <li><%= link_to 'Movies', '/movies/all'%> </li>
                     <li><%= link_to 'Add review', new_movie_path%> </li>
                     <% if logged_in? %>
                     <li><%= link_to "Log out", logout_path, method: "delete" %></li>
@@ -38,7 +39,7 @@
                <%= form_tag movies_path, :method => 'get', :class =>"navbar-form navbar-right", :role => "search" do %>  
                         <div class="input-group">
                             
-                            <%= (text_field_tag :search, params[:search], :class =>"form-control", :placeholder =>"Search by category") %>
+                            <%= (text_field_tag :search, params[:search], :class =>"form-control", :placeholder =>"Search") %>
                         <div class="input-group-btn">
                     <%= submit_tag "Search",:category => nil, class:'btn btn-success' %>
                     <% end %>

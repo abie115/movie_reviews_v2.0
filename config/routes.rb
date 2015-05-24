@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
+  get 'movies/all' => 'movies#all'
+  get 'movies/all/:genre' => 'movies#all'
+
   resources :movies
   resources :users 
   # The priority is based upon order of creation: first created -> highest priority.
