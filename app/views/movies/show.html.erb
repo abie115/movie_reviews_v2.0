@@ -113,7 +113,7 @@
 
 <%= link_to '<< Back', movies_path, :class=>"btn btn-success btn-sm"%>
 <% if logged_in? %>
-  <%= link_to 'Add review',  new_review_path(:movie => @movie.id), :class=>"btn btn-primary btn-sm" %>
+  <%= link_to 'Add review',  new_review_path(:movie => @movie['id']), :class=>"btn btn-primary btn-sm" %>
 <%end%>
 <hr>
 

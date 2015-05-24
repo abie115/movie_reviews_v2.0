@@ -12,17 +12,19 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
       @comments= @review.comments.paginate(page: params[:page], :per_page =>5)
+      @movie = Tmdb::Movie.detail(@review.movie_id)
   end
 
   # GET /reviews/new
   def new
     @review = Review.new
-    @movie=Movie.find(params[:movie])
+    #@movie=Movie.find(params[:movie])
+    @movie = Tmdb::Movie.detail(params[:movie])
   end
 
   # GET /reviews/1/edit
   def edit
-     @movie=Movie.find(@review.movie_id)
+     @movie = Tmdb::Movie.detail(@review.movie_id)
   end
 
   # POST /reviews
@@ -37,13 +39,13 @@ class ReviewsController < ApplicationController
       else
          flash.now[:danger] = 'Invalid data'
           render 'new'
-    end
+      end
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-      @movie=Movie.find(@review.movie_id)
+      @movie = Tmdb::Movie.detail(@review.movie_id)
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
