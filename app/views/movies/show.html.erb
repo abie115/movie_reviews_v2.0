@@ -35,11 +35,14 @@
  
         <% @reviews.each do |review| %>
      <ul id="reviews">
-        <li><%= review.title %></li>
-        <li><%= link_to 'Show', review, :class=>"btn btn-primary btn-sm" %></li>
+        <li>Title: <%= review.title %> </li>
+            <li><%= review.created_at.strftime("%m/%d/%Y") %></li>
+        <li><%= link_to 'Show', review, :class=>"btn btn-primary btn-sm" %> 
+         <% if logged_in? %>
+         <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm"%>
+         <% end %> </li>
     </ul>
 <% end %>
-
       <%= will_paginate @reviews %>
     <% end %>
     

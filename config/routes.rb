@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'movies#index'
+  get 'movie'  => 'movies#show'
+  get 'review'  => 'reviews#show'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

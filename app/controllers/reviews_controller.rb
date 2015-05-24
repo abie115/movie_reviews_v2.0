@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_filter :require_login, :only => [:new, :edit]
 
   # GET /reviews
   # GET /reviews.json
@@ -32,7 +33,7 @@ class ReviewsController < ApplicationController
    # respond_to do |format|
       if @review.save        
            flash[:success] = "You have created review successfully."
-          redirect_to :controller => 'movies', :action => 'index'
+         redirect_to(movie_path(@review.movie_id))
       else
          flash.now[:danger] = 'Invalid email or password'
           render 'new'
@@ -57,11 +58,12 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
+    #respond_to do |format|
+      flash[:notice] ='Movie review was successfully destroyed.'
+       redirect_to(movie_path(@review.movie_id))
+      #format.json { head :no_content }
     end
-  end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

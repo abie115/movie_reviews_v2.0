@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
    
       if @comment.save
            flash[:success] = "You have created comment successfully."
-      redirect_to :controller => 'movies', :action => 'index'
+      redirect_to(review_path(@comment.review_id))
       else
          flash.now[:danger] = 'Invalid email or password'
       render 'new'
