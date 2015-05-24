@@ -131,8 +131,8 @@
 <hr>
 
  <div>
-    <% if @movie.reviews.any? %>
-      <h2>Review (<%= @movie.reviews.count %>)</h2>
+    <% if @reviews.any? %>
+      <h2>Review (<%= @reviews.count %>)</h2>
  
         <% @reviews.each do |review| %>
      <ul id="reviews">

@@ -30,7 +30,8 @@ class MoviesController < ApplicationController
   def show
     @configuration = Tmdb::Configuration.new
     #@comments = @movie.comments.paginate(page: params[:page], :per_page =>5)
-    @reviews= @movie.reviews.paginate(page: params[:page], :per_page =>5)
+    #@reviews= @movie.reviews.paginate(page: params[:page], :per_page =>5)
+    @reviews = Review.where("movie_id=?", @movie['id'])
   end
   
   # GET /movies/all
