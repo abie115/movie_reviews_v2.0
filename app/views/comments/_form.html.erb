@@ -22,8 +22,8 @@
     <%= f.text_field :nick %>
   </div>
     <%= f.hidden_field :add_date, :value => Time.now %>
-    <%= f.hidden_field :movie_id, :value => @movie.id %>
-
+       <%= f.hidden_field :review_id, :value =>@review.id %>
+   
    <div class="actions">
         <%= f.submit 'Submit', :class =>"btn btn-warning btn-sm"%>
     </div>

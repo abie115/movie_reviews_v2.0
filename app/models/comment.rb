@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
-  belongs_to :movie
+  belongs_to :review
   default_scope -> { order(created_at: :desc) }
-  validates :movie_id, presence: true
+  validates :review_id, presence: true
 
 end
