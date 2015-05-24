@@ -1,5 +1,10 @@
 <div>
-  <%= image_tag("#{@configuration.base_url}w154#{@movie['poster_path']}") %>
+  <% if @movie['poster_path'] %>
+      <%= image_tag("#{@configuration.base_url}w154#{@movie['poster_path']}") %>
+  <% else %>
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      brak
+  <% end %>
 </div>
 
 <p>
@@ -9,13 +14,17 @@
 
 <p>
   <strong>Category:</strong>
-  <% @loop = 0 %>
-  <% @movie['genres'].each do |genre| %>
-    <% if @loop != 0 %>
-      , 
-    <%end%>
-    <%= genre['name'] %>
-    <% @loop += 1 %>
+  <% if @movie['genres'] != nil && @movie['genres'].length != 0 %>
+    <% @loop = 0 %>
+    <% @movie['genres'].each do |genre| %>
+      <% if @loop != 0 %>
+        , 
+      <%end%>
+      <%= genre['name'] %>
+      <% @loop += 1 %>
+    <% end %>
+  <% else %>
+    ---
   <% end %>
 </p>
 
@@ -26,67 +35,94 @@
 
 <p>
   <strong>Release date:</strong>
-  <%= @movie['release_date'] %>
+  <% if @movie['release_date'].length != 0 %>
+    <%= @movie['release_date'] %>
+  <% else %>
+    ---
+  <% end %>
 </p>
 
 <p>
   <strong>Time:</strong>
-  <%= @movie['runtime'] %> min.
+  <% if @movie['runtime'] != nil && @movie['runtime'] != 0 %>
+    <%= @movie['runtime'] %>  min.
+  <% else %>
+    ---
+  <% end %>
 </p>
 
 <p>
   <strong>Homepage:</strong>
   <% @homepage = @movie['homepage'] %>
-  <% if @homepage == nil %>
+  <% if @homepage != nil && @homepage.length != 0 %>
+    <%= @homepage %>
+  <% else %>
     ---
   <% end %>
-  <%= @homepage %>
 </p>
 
 <p>
   <strong>Language:</strong>
-  <%= @movie['original_language'] %>
+  <% if @movie['original_language'] != nil && @movie['original_language'].length != 0 %>
+    <%= @movie['original_language'] %>
+  <% else %>
+    ---
+  <% end %>
 </p>
 
 <p>
   <strong>Spoken languages:</strong>
-  <% @loop = 0 %>
-  <% @movie['spoken_languages'].each do |language| %>
-    <% if @loop != 0 %>
-      , 
-    <%end%>
-    <%= language['name'] %>
-    <% @loop += 1 %>
+  <% if @movie['spoken_languages'] != nil && @movie['spoken_languages'].length != 0 %>
+    <% @loop = 0 %>
+    <% @movie['spoken_languages'].each do |language| %>
+      <% if @loop != 0 %>
+        , 
+      <%end%>
+      <%= language['name'] %>
+      <% @loop += 1 %>
+    <% end %>
+  <% else %>
+    ---
   <% end %>
 </p>
 
 <p>
   <strong>Companies:</strong>
-  <% @loop = 0 %>
-  <% @movie['production_companies'].each do |company| %>
-    <% if @loop != 0 %>
-      , 
-    <%end%>
-    <%= company['name'] %>
-    <% @loop += 1 %>
+  <% if @movie['production_companies'] != nil && @movie['production_companies'].length != 0 %>
+    <% @loop = 0 %>
+    <% @movie['production_companies'].each do |company| %>
+      <% if @loop != 0 %>
+        , 
+      <%end%>
+      <%= company['name'] %>
+      <% @loop += 1 %>
+    <% end %>
+  <% else %>
+    ---
   <% end %>
 </p>
 
 <p>
   <strong>Review:</strong>
-  <%= @movie['overview'] %>
+  <% if @movie['overview'] != nil && @movie['overview'].length != 0 %>
+    <%= @movie['overview'] %>
+  <% else %>
+    ---
+  <%end%>
 </p>
 
 <%= link_to '<< Back', movies_path, :class=>"btn btn-success btn-sm"%>
 
 <hr>
 
-<% @trailers['youtube'].each do |trailer| %>
-  <p>
-    <strong><%= trailer['name'] %></strong>
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= trailer['source'] %>"></iframe>
-    </div>
-  </p>
+<% if @trailers['youtube'] != nil %>
+  <% @trailers['youtube'].each do |trailer| %>
+    <p>
+      <strong><%= trailer['name'] %></strong>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= trailer['source'] %>"></iframe>
+      </div>
+    </p>
+  <% end %>
 <% end %>
 

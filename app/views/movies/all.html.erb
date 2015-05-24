@@ -25,7 +25,11 @@
   <% @movies.each do |movie| %>
           <div class="list row">
               <div class="col-md-2">
-              <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") %>
+                <% if movie['poster_path'] %>
+                    <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") %>
+                <% else %>
+                    brak
+                <% end %>
               </div>
               
               <dl class="dl-horizontal col-md-9"> 
@@ -33,7 +37,13 @@
                   <dd><%= movie['title'] %></dd>
           
                   <dt>Release date:</dt>
-                  <dd><%= movie['release_date'] %> <dd>
+                  <dd>
+                    <% if movie['release_date'].length != 0 %>
+                        <%= movie['release_date'] %>
+                    <% else %>
+                        ---
+                    <% end %>
+                  <dd>
               
                   <dt>Rating:</dt>
                   <dd><%= movie['vote_average'] %> (<%= movie['vote_count'] %> votes)<dd>
