@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+    has_many :reviews
     validates_presence_of :name, :title, :category 
     validates_length_of :title, :category, :minimum => 3
     validate do

@@ -1,0 +1,33 @@
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+   <div  class="alert alert-danger" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>    
+      The form contains <%= pluralize(@review.errors.count, "error") %>.
+    <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-4 ">
+      <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+   <%= f.hidden_field :movie_id, :value => @movie.id %>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+     <div class="actions">
+        <%= f.submit 'Submit', :class =>"btn btn-warning btn-sm"%>
+<% end %>
+  </div>
+</div>

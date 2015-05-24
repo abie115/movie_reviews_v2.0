@@ -112,7 +112,9 @@
 </p>
 
 <%= link_to '<< Back', movies_path, :class=>"btn btn-success btn-sm"%>
-
+<% if logged_in? %>
+  <%= link_to 'Add review',  new_review_path(:movie => @movie.id), :class=>"btn btn-primary btn-sm" %>
+<%end%>
 <hr>
 
 <% if @trailers['youtube'] != nil %>
@@ -125,4 +127,26 @@
     </p>
   <% end %>
 <% end %>
+
+<hr>
+
+ <div>
+    <% if @movie.reviews.any? %>
+      <h2>Review (<%= @movie.reviews.count %>)</h2>
+ 
+        <% @reviews.each do |review| %>
+     <ul id="reviews">
+        <li>Title: <%= review.title %> </li>
+            <li><%= review.created_at.strftime("%m/%d/%Y") %></li>
+        <li><%= link_to 'Show', review, :class=>"btn btn-primary btn-sm" %> 
+         <% if logged_in? %>
+         <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm"%>
+         <% end %> </li>
+    </ul>
+<% end %>
+      <%= will_paginate @reviews %>
+    <% end %>
+    
+  </div>
+
 

@@ -1,0 +1,33 @@
+<p>
+  <strong>Title:</strong>
+  <%= @review.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @review.description %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @review.movie.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @review.user %>
+</p>
+
+
+  <% if logged_in? %>
+<%= link_to 'Edit', edit_review_path(@review), :class=>"btn btn-success btn-sm"%>
+<% end %>
+<%= link_to 'Add comment',  new_comment_path(:review => @review.id), :class=>"btn btn-primary btn-sm" %>
+
+<% if @review.comments.any? %>
+      <h2>Comments (<%= @review.comments.count %>)</h2>
+      <ol class="comments">
+        <%= render @review.comments %>
+      </ol>
+      <%= will_paginate @comments %>
+    <% end %>

@@ -29,6 +29,8 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @configuration = Tmdb::Configuration.new
+    #@comments = @movie.comments.paginate(page: params[:page], :per_page =>5)
+    @reviews= @movie.reviews.paginate(page: params[:page], :per_page =>5)
   end
   
   # GET /movies/all
