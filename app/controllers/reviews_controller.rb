@@ -35,6 +35,8 @@ class ReviewsController < ApplicationController
            flash[:success] = "You have created review successfully."
          redirect_to(movie_path(@review.movie_id))
       else
+        @user=User.find(current_user)
+        @movie = Tmdb::Movie.detail(@review.movie_id)
          flash.now[:danger] = 'Invalid data'
           render 'new'
       end
@@ -49,6 +51,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
+        @user=User.find(current_user)
         format.html { render :edit }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -63,7 +66,7 @@ class ReviewsController < ApplicationController
       flash[:notice] ='Movie review was successfully destroyed.'
        redirect_to(movie_path(@review.movie_id))
       #format.json { head :no_content }
-    end
+  end
   #end
 
   private
