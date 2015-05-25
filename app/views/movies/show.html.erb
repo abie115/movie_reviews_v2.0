@@ -115,18 +115,25 @@
 <% if logged_in? %>
   <%= link_to 'Add review',  new_review_path(:movie => @movie['id']), :class=>"btn btn-primary btn-sm" %>
 <%end%>
+
 <hr>
 
-<% if @trailers['youtube'] != nil %>
-  <% @trailers['youtube'].each do |trailer| %>
-    <p>
-      <strong><%= trailer['name'] %></strong>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= trailer['source'] %>"></iframe>
-      </div>
-    </p>
+<button type="button" class="btn btn-primary btn-sm" id="showButton">
+  Show trailers
+</button>
+<div id="trailers">
+  <% if @trailers['youtube'] != nil %>
+    <% @trailers['youtube'].each do |trailer| %>
+    <br><br>
+      <p>
+        <strong><%= trailer['name'] %></strong>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= trailer['source'] %>"></iframe>
+        </div>
+      </p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <hr>
 
@@ -149,4 +156,17 @@
     
   </div>
 
-
+<script>
+  var trailers = document.getElementById("trailers");
+  var showButton = document.getElementById("showButton");
+  
+  trailers.style.display = "none";
+  
+  showButton.onclick = function(){
+    if (trailers.style.display === "none"){
+      trailers.style.display = "block";
+    } else {
+      trailers.style.display = "none";
+    }
+  };
+</script>
