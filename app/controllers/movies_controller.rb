@@ -38,7 +38,16 @@ class MoviesController < ApplicationController
   def all
     if params['genre']
       @genre = Tmdb::Genre.detail(params['genre'])
-      @movies = @genre.results
+      @maxPages = @genre.total_pages
+      @pages = Array.new
+      (1..@maxPages).each { |i| @pages.push(i) }
+      @indexes = @pages.paginate(page: params[:page], :per_page=>1)
+      if params[:page] != nil && params[:page].to_i != 1
+        @page = params[:page].to_i
+        @movies = @genre.get_page(@page).results
+      else
+        @movies = @genre.results
+      end
     else
       @movies = Tmdb::Movie.popular
     end

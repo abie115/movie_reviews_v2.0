@@ -2,8 +2,7 @@
   <% if @movie['poster_path'] %>
       <%= image_tag("#{@configuration.base_url}w154#{@movie['poster_path']}") %>
   <% else %>
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-      brak
+    <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
   <% end %>
 </div>
 
@@ -165,8 +164,10 @@
   showButton.onclick = function(){
     if (trailers.style.display === "none"){
       trailers.style.display = "block";
+      showButton.textContent = "Hide trailers";
     } else {
       trailers.style.display = "none";
+      showButton.textContent = "Show trailers";
     }
   };
 </script>
