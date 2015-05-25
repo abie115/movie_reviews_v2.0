@@ -1,17 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
   before_filter :require_login, :only => [:new]
-  # GET /comments
-  # GET /comments.json
-  def index
-   # @comments = Comment.all
-     # @comments = Comment.paginate(page: params[:page])
-  end
 
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-  end
 
   # GET /comments/new
   def new

@@ -4,7 +4,7 @@
 # Examples:
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
     User.create(name:'test', email:'testowy@example.com', password:'123456')
-    
+
     Movie.create(title: 'Dirty Dancing', category: 'Romance', release_date: '1990-04-11', name:'kasia', review:'Film z serii dla dziewczyn. Główna bohaterka Baby zakochuje się w instruktorze tańca. Co dalej samemu można się domyśleć;)')
     Movie.create(title: 'Non-Stop', category: 'Action', release_date: '2014-12-12', name:'kasia', review:' Kolejny film z moim ulubionym aktorem Liamem Nessonem. Kolejny film, w którym wciela się w agenta, który musi uratować ludzi przed złoczyńcami! Tym razem musi uratować pasażerów i załogę samolotu opanowanego przez terrorystów.')
     Movie.create(title: '13th Friday', category: 'Horror', release_date: '2011-06-11', name:'kasia', review:' Nowa odsłona znanego horroru. Grupa znajomych wybiera się do domu nad jeziorem Crystal Lake. Podczas weekendu zostają zaatakowani przez psychopatę. POlecam dla fanów serii!')

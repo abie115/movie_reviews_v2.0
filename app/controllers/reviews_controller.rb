@@ -2,11 +2,6 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :require_login, :only => [:new, :edit]
 
-  # GET /reviews
-  # GET /reviews.json
-  def index
-    @reviews = Review.all
-  end
 
   # GET /reviews/1
   # GET /reviews/1.json
