@@ -22,10 +22,7 @@
     <%= f.text_area :description, :class => "form-control"%>
   </div>
    <%= f.hidden_field :movie_id, :value => @movie['id'] %>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+   <%= f.hidden_field :user_id, :value => @user.id %>
      <div class="actions">
         <%= f.submit 'Submit', :class =>"btn btn-warning btn-sm"%>
 <% end %>

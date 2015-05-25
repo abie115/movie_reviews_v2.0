@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   def show
       @comments= @review.comments.paginate(page: params[:page], :per_page =>5)
       @movie = Tmdb::Movie.detail(@review.movie_id)
+      @user=User.find(current_user)
   end
 
   # GET /reviews/new
@@ -20,11 +21,13 @@ class ReviewsController < ApplicationController
     @review = Review.new
     #@movie=Movie.find(params[:movie])
     @movie = Tmdb::Movie.detail(params[:movie])
+    @user=User.find(current_user)
   end
 
   # GET /reviews/1/edit
   def edit
      @movie = Tmdb::Movie.detail(@review.movie_id)
+     @user=User.find(current_user)
   end
 
   # POST /reviews
