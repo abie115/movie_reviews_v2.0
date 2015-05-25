@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def show
       @comments= @review.comments.paginate(page: params[:page], :per_page =>5)
       @movie = Tmdb::Movie.detail(@review.movie_id)
-      @user=User.find(current_user)
+     # @user=User.find(current_user)
   end
 
   # GET /reviews/new
