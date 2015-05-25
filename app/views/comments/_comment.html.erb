@@ -4,7 +4,7 @@
   <li>
     Commented <%= time_ago_in_words(comment.created_at) %> ago.
   </li>
-<li>  <% if logged_in? %>
+<li>  <% if logged_in? && comment.nick == current_user.name %>
          <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm"%>
          <% end %></li>
 </ul>

@@ -145,8 +145,8 @@
         <li>Title: <%= review.title %> </li>
             <li><%= review.created_at.strftime("%m/%d/%Y") %></li>
         <li><%= link_to 'Show', review, :class=>"btn btn-primary btn-sm" %> 
-         <% if logged_in? %>
-         <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm"%>
+         <% if logged_in? && review.user.name == current_user.name %>
+           <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm"%>
          <% end %> </li>
     </ul>
 <% end %>

@@ -18,11 +18,9 @@
     <%= f.text_area :content, :class => "form-control"%>
   </div>
   <div class="field">
-    <%= f.label :nick %><br>
-    <%= f.text_field :nick , :class => "form-control",:rows=>10%>
-  </div>
     <%= f.hidden_field :add_date, :value => Time.now %>
        <%= f.hidden_field :review_id, :value =>@review.id %>
+       <%= f.hidden_field :nick, :value => @user.name %>
    
    <div class="actions">
         <%= f.submit 'Submit', :class =>"btn btn-warning btn-sm"%>

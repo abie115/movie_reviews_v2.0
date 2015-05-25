@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @review=Review.find(params[:review])
    # @movie=Movie.find(params[:movie])
+   @user=User.find(current_user)
   end
 
   # GET /comments/1/edit

@@ -22,10 +22,12 @@
 
 
 
-  <% if logged_in? %>
-<%= link_to 'Edit', edit_review_path(@review), :class =>"btn btn-warning btn-sm"%>
+<% if logged_in? %>
+  <% if @review.user.name == current_user.name %>
+    <%= link_to 'Edit', edit_review_path(@review), :class =>"btn btn-warning btn-sm"%>
+  <% end %>
+  <%= link_to 'Add comment',  new_comment_path(:review => @review.id), :class=>"btn btn-primary btn-sm" %>
 <% end %>
-<%= link_to 'Add comment',  new_comment_path(:review => @review.id), :class=>"btn btn-primary btn-sm" %>
 
 <% if @review.comments.any? %>
       <h2>Comments (<%= @review.comments.count %>)</h2>
