@@ -1,11 +1,8 @@
+<%= link_to '<< Back', movie_path(@movie['id']), :class=>"btn btn-success" %>
+<br></br>
 <p>
   <strong>Title:</strong>
   <%= @review.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @review.description %>
 </p>
 
 <p>
@@ -15,12 +12,18 @@
 
 <p>
   <strong>User:</strong>
-  <%= @review.user %>
+  <%= @review.user.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @review.description %>
 </p>
 
 
+
   <% if logged_in? %>
-<%= link_to 'Edit', edit_review_path(@review), :class=>"btn btn-success btn-sm"%>
+<%= link_to 'Edit', edit_review_path(@review), :class =>"btn btn-warning btn-sm"%>
 <% end %>
 <%= link_to 'Add comment',  new_comment_path(:review => @review.id), :class=>"btn btn-primary btn-sm" %>
 
