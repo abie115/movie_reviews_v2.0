@@ -5,6 +5,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
     User.create(name:'test', email:'testowy@example.com', password:'123456')
 
+    Review.create(title:'Swietny film', description:'Nowy film z kultowej seri, polecam wszystkim, dla fanow seri przede wszystkim', movie_id:76341, user_id:1)
+    Review.create(title:'Czy wkoncu nas zaskoczą?', description:'Nowy film z kultowej seri, polecam wszystkim, dla fanow seri przede wszystkim', movie_id:76341, user_id:1)   
+    Review.create(title:'Niespodzienka od Marvela', description:'Jak zwykle film buduje napiecie od samego początku. Wielki nakład finansowy urzeczywisnil się w super efektach specjalnych. Polecam', movie_id:99861, user_id:1)
+    Review.create(title:'Kolejna bajka', description:'To, że jestem sceptycznie nastawiony do wszelakich filmow sci-fi z udziałem brygady marvela', movie_id:99861, user_id:1)
+   Review.create(title:'Czy wkoncu nas zaskoczą?', description:'Nowy film z kultowej seri, polecam wszystkim, dla fanow seri przede wszystkim', movie_id:99861, user_id:1)
+    
+
     Movie.create(title: 'Dirty Dancing', category: 'Romance', release_date: '1990-04-11', name:'kasia', review:'Film z serii dla dziewczyn. Główna bohaterka Baby zakochuje się w instruktorze tańca. Co dalej samemu można się domyśleć;)')
     Movie.create(title: 'Non-Stop', category: 'Action', release_date: '2014-12-12', name:'kasia', review:' Kolejny film z moim ulubionym aktorem Liamem Nessonem. Kolejny film, w którym wciela się w agenta, który musi uratować ludzi przed złoczyńcami! Tym razem musi uratować pasażerów i załogę samolotu opanowanego przez terrorystów.')
     Movie.create(title: '13th Friday', category: 'Horror', release_date: '2011-06-11', name:'kasia', review:' Nowa odsłona znanego horroru. Grupa znajomych wybiera się do domu nad jeziorem Crystal Lake. Podczas weekendu zostają zaatakowani przez psychopatę. POlecam dla fanów serii!')
