@@ -1,4 +1,4 @@
-# movie_reviews_v2.0
+# Movie Reviews
 
 Projekt na egzamin z przedmiotu Architektura Sieci Web.<br>
 Rozwiniecie projektu https://github.com/abie115/movie_reviews<br>
