@@ -4,7 +4,8 @@ Projekt na egzamin z przedmiotu Architektura Sieci Web.<br>
 Rozwiniecie projektu https://github.com/abie115/movie_reviews<br>
 Movie Review jest aplikacją umożliwiającą przeglądanie bazy filmów oraz podstawowych informacji o tych filmach, a także z możliwoscią przeglądania ich trailerów. Dodatkowo można dodawać własne recenzje filmów, oraz komentować wystawione już recenzje. W planach było jeszcze wprowadzenie możliwości przypomnienia hasła, jednak nie nie została ona wprowadzona przez brak czasu.<br>
 Projekt korzysta z API udostpnianego przez stronę www.themoviedb.org<br>
-<br>
+Link do aplikacji na heroku: https://reviewmovie.herokuapp.com<br>
+
 Projekt zostal stworzony przez zespół Vienas.<br>
 Skład zespołu:<br>
  Aldona Biewska (224605)<br>
